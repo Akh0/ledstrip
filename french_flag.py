@@ -19,5 +19,4 @@ for i in white_leds:
 for i in red_leds:
   leds[i] = 0xff0000
 
-print('French Flag')
 leds.show()

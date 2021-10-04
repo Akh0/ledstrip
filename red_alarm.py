@@ -7,7 +7,7 @@ strip = Strip(0, 0xff0000)
 leds = strip.leds
 
 brightness = 0
-blink_velocity = 0.02
+blink_velocity = 0.1
 is_increasing_brighness = True
 
 try:
@@ -25,5 +25,4 @@ try:
     leds.show()
     sleep(0.01)
 except KeyboardInterrupt:
-  print("Power off")
   strip.off()

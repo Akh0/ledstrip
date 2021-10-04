@@ -6,7 +6,7 @@ O_DATA = board.MOSI
 NB_LEDS = 70
 
 class Strip:
-  def __init__(self, default_brightness=1, default_color=None, auto_write=True):
+  def __init__(self, default_brightness=1, default_color=None, auto_write=False):
     self.leds = adafruit_ws2801.WS2801(O_CLOCK, O_DATA, NB_LEDS, brightness=default_brightness, auto_write=auto_write)
 
     if default_color:
