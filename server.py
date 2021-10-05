@@ -4,19 +4,7 @@ import json
 import cgi
 from strip import Strip
 from animation_thread import AnimationThread
-from anim_color_wheel import ColorWheelAnimation
-from anim_flag import FlagAnimation
-from anim_red_alarm import RedAlarmAnimation
-from anim_split_snake import SplitSnakeAnimation
-from anim_stroboscope import StroboscopeAnimation
-
-available_animations = {
-  'color_wheel': ColorWheelAnimation,
-  'flag': FlagAnimation,
-  'red_alarm': RedAlarmAnimation,
-  'split_snake': SplitSnakeAnimation,
-  'stroboscope': StroboscopeAnimation,
-}
+from available_animations import AVAILABLE_ANIMATIONS
 
 class StripHandler:
   def __init__(self):
@@ -24,8 +12,7 @@ class StripHandler:
 
   def check_payload(self, payload):
     if 'animation' in payload and payload['animation'] is not None:
-      print(payload['animation'])
-      if payload['animation'] not in available_animations:
+      if payload['animation'] not in AVAILABLE_ANIMATIONS:
         return False
       
     # TODO: check color and brightness
@@ -41,7 +28,7 @@ class StripHandler:
     
       if 'animation' in payload and payload['animation'] is not None:
         self.animation_thread = AnimationThread()
-        animation = available_animations[payload['animation']](Strip())
+        animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](Strip())
         self.animation_thread.set_animation(animation)
         self.animation_thread.start()
       else:
