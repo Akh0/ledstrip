@@ -25,17 +25,26 @@ class StripHandler:
 
   def update_strip(self, payload):
     self.stop_animation_thread()
-  
+
+    strip = Strip()
+
+    has_brightness = 'brightness' in payload and payload['brightness'] is not None
+    has_color = 'color' in payload and payload['color'] is not None
+
+    if has_brightness or has_color:
+      if has_brightness:
+        strip.leds.brightness = payload['brightness'] / 100
+      
+      if has_color:
+        strip.leds.fill(int('0x' + payload['color'], 16))
+
+      strip.leds.show()
+
     if 'animation' in payload and payload['animation'] is not None:
       self.animation_thread = AnimationThread()
-      animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](Strip())
+      animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](strip)
       self.animation_thread.set_animation(animation)
       self.animation_thread.start()
-    else:
-      strip = Strip()
-      strip.leds.fill(int('0x' + payload['color'], 16))
-      strip.leds.brightness = payload['brightness'] / 100
-      strip.leds.show()
 
 # Strip handle need to be initialized globally to keep an unique thread
 strip_handler = StripHandler()
