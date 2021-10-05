@@ -51,7 +51,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
   ###
   def do_GET(self):
     if self.path == '/animations':
-      self._set_headers(403)
+      self._set_headers()
 
       response = {}
       for key in AVAILABLE_ANIMATIONS:
