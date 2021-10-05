@@ -16,9 +16,9 @@ class StroboscopeAnimation(Animation):
     center_leds = range(11,59)
     right_leds = range(0,11)
 
-    left_color = 0xcf4100
-    right_color = 0xcf4100
-    center_color = 0xc70000
+    left_color = 0xffffff
+    right_color = 0xffffff
+    center_color = 0xffffff
 
     off_color = 0x000000
 

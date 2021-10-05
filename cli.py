@@ -56,4 +56,9 @@ if args.animation:
   if args.animation not in AVAILABLE_ANIMATIONS:
         sys.exit(args.animation + ' animation not available :-(\n\nChoose between ' + ', '.join(AVAILABLE_ANIMATIONS.keys()))
 
-  AVAILABLE_ANIMATIONS[args.animation]['construct'](strip).start()
+animation = AVAILABLE_ANIMATIONS[args.animation]['construct'](strip)
+
+try:
+  animation.start()
+except KeyboardInterrupt:
+  animation.stop()

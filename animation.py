@@ -29,4 +29,4 @@ class Animation(ABC):
 
   @property
   def nb_leds(self):
-    return self.strip.nb_leds
+    return len(self.strip.leds)

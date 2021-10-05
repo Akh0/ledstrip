@@ -3,6 +3,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import cgi
 from strip import Strip
+from config import config
 from animation_thread import AnimationThread
 from available_animations import AVAILABLE_ANIMATIONS
 
@@ -99,9 +100,9 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
     # send the message back
     self.wfile.write(json.dumps(response).encode('utf-8'))
 
-PORT = 8888
-server = HTTPServer(('', PORT), HTTPRequestHandler)
-print('Server running on port %s' % PORT)
+port = config['server']['port']
+server = HTTPServer(('', port), HTTPRequestHandler)
+print('Server running on port %s' % port)
 
 try:
   server.serve_forever()

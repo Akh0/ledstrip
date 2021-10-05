@@ -1,4 +1,4 @@
-from strip import Strip, NB_LEDS
+from strip import Strip
 from time import sleep
 from animation import Animation
 
@@ -11,7 +11,7 @@ class SplitSnakeAnimation(Animation):
 
     for i in range(self.half_nb_leds, 0, -1):
       leds[i] = color
-      leds[NB_LEDS-i-1] = color
+      leds[self.nb_leds-i-1] = color
       leds.show()
       sleep(speed)
 
@@ -20,7 +20,7 @@ class SplitSnakeAnimation(Animation):
    
     for i in range(0, self.half_nb_leds):
       leds[i] = color
-      leds[NB_LEDS-i-1] = color
+      leds[self.nb_leds-i-1] = color
       leds.show()
       sleep(speed)
 

@@ -17,8 +17,8 @@ class RainbowAnimation(Animation):
       return (0, pos * 3, 255 - pos * 3)
 
   def run(self):
-    nb_leds = self.strip.nb_leds
-    leds = self.strip.leds
+    nb_leds = self.nb_leds
+    leds = self.leds
 
     while self.is_running:
       for j in range(256): # one cycle of all 256 colors in the wheel
