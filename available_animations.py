@@ -1,5 +1,6 @@
 from anim_color_wheel import ColorWheelAnimation
 from anim_flag import FlagAnimation
+from anim_rainbow import RainbowAnimation
 from anim_red_alarm import RedAlarmAnimation
 from anim_split_snake import SplitSnakeAnimation
 from anim_stroboscope import StroboscopeAnimation
@@ -12,6 +13,10 @@ AVAILABLE_ANIMATIONS = {
   'flag': {
     'name': 'French Flag',
     'construct': FlagAnimation,
+  },
+  'rainbow': {
+    'name': 'Rainbow',
+    'construct': RainbowAnimation,
   },
    'red_alarm': {
     'name': 'Red Alarm',
