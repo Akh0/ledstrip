@@ -24,31 +24,44 @@ class StripHandler:
       self.animation_thread.join()
 
   def update_strip(self, payload):
-      self.stop_animation_thread()
-    
-      if 'animation' in payload and payload['animation'] is not None:
-        self.animation_thread = AnimationThread()
-        animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](Strip())
-        self.animation_thread.set_animation(animation)
-        self.animation_thread.start()
-      else:
-        strip = Strip()
-        strip.leds.fill(int('0x' + payload['color'], 16))
-        strip.leds.brightness = payload['brightness'] / 100
-        strip.leds.show()
+    self.stop_animation_thread()
+  
+    if 'animation' in payload and payload['animation'] is not None:
+      self.animation_thread = AnimationThread()
+      animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](Strip())
+      self.animation_thread.set_animation(animation)
+      self.animation_thread.start()
+    else:
+      strip = Strip()
+      strip.leds.fill(int('0x' + payload['color'], 16))
+      strip.leds.brightness = payload['brightness'] / 100
+      strip.leds.show()
 
+# Strip handle need to be initialized globally to keep an unique thread
 strip_handler = StripHandler()
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
-  def __init__(self, *args):
-    BaseHTTPRequestHandler.__init__(self, *args)
-
   def _set_headers(self, status_code = 200):
     self.send_response(status_code)
     self.send_header('Content-type', 'application/json')
     self.end_headers()
 
-  # POST Requests
+  ###
+  ### GET Requests
+  ###
+  def do_GET(self):
+    if self.path == '/animations':
+      self._set_headers(403)
+
+      response = {}
+      for key in AVAILABLE_ANIMATIONS:
+        response[key] = AVAILABLE_ANIMATIONS[key]["name"]
+      
+      self.wfile.write(json.dumps(response).encode('utf-8'))
+
+  ###
+  ### POST Requests
+  ###
   def do_POST(self):
     if self.path == '/set':
       ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
@@ -69,10 +82,13 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
         strip_handler.update_strip(payload)
       else:
         self._set_headers(400)
-        response = {"status": "nok", "code": 400}
+        response = {"status": "Bad Request", "code": 400}
+    else:
+      self._set_headers(403)
+      response = {"status": "Bad Request", "code": 403}
 
-      # send the message back
-      self.wfile.write(json.dumps(response).encode('utf-8'))
+    # send the message back
+    self.wfile.write(json.dumps(response).encode('utf-8'))
 
 PORT = 8888
 server = HTTPServer(('', PORT), HTTPRequestHandler)
