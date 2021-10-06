@@ -1,7 +1,7 @@
 <h1 align="center" >
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/86/RGB_color_model.svg" width="24" style="vertical-align: middle" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/86/RGB_color_model.svg" width="24" style="vertical-align: bottom" />
 LED Strip Server/CLI controller
-<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" width="24" style="vertical-align: middle" />
+<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" width="24" style="vertical-align: bottom" />
 </h1>
 
 HTTP Server and CLI for WS2801 RGB LED strip plugged on a Raspberry Pi.
