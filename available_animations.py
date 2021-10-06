@@ -1,10 +1,3 @@
-from animations.color_wheel import ColorWheelAnimation
-from animations.flag import FlagAnimation
-from animations.rainbow import RainbowAnimation
-# from animations.red_alarm import RedAlarmAnimation
-from animations.split_snake import SplitSnakeAnimation
-from animations.stroboscope import StroboscopeAnimation
-
 import glob
 import importlib
 from os.path import dirname, basename, isfile, join
