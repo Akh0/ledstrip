@@ -1,0 +1,13 @@
+Adafruit-Blinka==6.14.0
+adafruit-circuitpython-busdevice==5.1.0
+adafruit-circuitpython-ws2801==0.10.6
+Adafruit-PlatformDetect==3.15.3
+Adafruit-PureIO==1.1.9
+pkg_resources==0.0.0
+pyftdi==0.53.3
+pyserial==3.5
+pyusb==1.2.1
+PyYAML==5.4.1
+rpi-ws281x==4.3.0
+RPi.GPIO==0.7.0
+sysv-ipc==1.1.0
