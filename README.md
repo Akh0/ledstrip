@@ -1,6 +1,6 @@
 # LED Strip Server/CLI controller
 
-HTTP Server and CLI used to control a WS2801 RGB LED strip plugged on a Raspberry Pi.
+HTTP Server and CLI for WS2801 RGB LED strip plugged on a Raspberry Pi.
 
 This program use [Adafruit_CircuitPython_WS2801](https://github.com/adafruit/Adafruit_CircuitPython_WS2801) driver.
 
