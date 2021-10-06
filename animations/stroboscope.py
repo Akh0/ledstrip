@@ -52,3 +52,8 @@ class StroboscopeAnimation(Animation):
         self.color_leds(center_leds, off_color)
         leds.show()
         sleep(0.02)
+
+EXPORT = {
+  'label': 'Stroboscope',
+  'class': StroboscopeAnimation,
+}

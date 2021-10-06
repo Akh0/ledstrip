@@ -30,3 +30,8 @@ class ColorWheelAnimation(Animation):
 
       sleep(0.01)
       leds.show()
+
+EXPORT = {
+  'label': 'Color Wheel',
+  'class': ColorWheelAnimation,
+}

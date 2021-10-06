@@ -26,3 +26,8 @@ class RedAlarmAnimation(Animation):
       leds.brightness = brightness
       leds.show()
       sleep(0.01)
+
+EXPORT = {
+  'label': 'Red Alarm',
+  'class': RedAlarmAnimation,
+}

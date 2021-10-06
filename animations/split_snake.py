@@ -38,3 +38,8 @@ class SplitSnakeAnimation(Animation):
       self.sides_to_center(light)
       self.sides_to_center(dark)
       sleep(0.2)
+
+EXPORT = {
+  'label': 'Split Snake',
+  'class': SplitSnakeAnimation,
+}

@@ -27,3 +27,8 @@ class RainbowAnimation(Animation):
         
         leds.show()
         sleep(0.01)
+
+EXPORT = {
+  'label': 'Rainbow',
+  'class': RainbowAnimation,
+}

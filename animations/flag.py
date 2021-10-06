@@ -22,3 +22,8 @@ class FlagAnimation(Animation):
       leds[i] = 0xff0000
 
     leds.show()
+
+EXPORT = {
+  'label': 'French Flag',
+  'class': FlagAnimation,
+}

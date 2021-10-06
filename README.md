@@ -1,7 +1,7 @@
-<h1 align="center" >
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/86/RGB_color_model.svg" width="24" />
-LED Strip Server/CLI controller
-<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" width="24" />
+<h1 align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/RGB_color_model.svg" width="24" />
+  LED Strip Server/CLI controller
+  <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" width="24" />
 </h1>
 
 HTTP Server and CLI for WS2801 RGB LED strip plugged on a Raspberry Pi.
@@ -36,7 +36,8 @@ Go to `3 Interface Options` -> `P4 SPI` -> `Yes` -> Reboot.
 
 - Install:
 
-  - Clone this repository
+  - `git clone git@github.com:Akh0/ledstrip.git` - Clone this repository
+  - `cd ledstrip`
   - `make install` - Install the dependencies
 
 - Commands:
