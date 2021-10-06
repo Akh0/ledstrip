@@ -1,4 +1,4 @@
-run_server:
+start_server:
 	python3 server.py
 
 install:
