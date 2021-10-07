@@ -22,7 +22,6 @@ class StripHandler:
   def stop_animation_thread(self):
     if self.animation_thread and self.animation_thread.is_alive():
       self.animation_thread.stop()
-      self.animation_thread.join()
 
   def update_strip(self, payload):
     self.stop_animation_thread()
