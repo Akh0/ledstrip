@@ -9,6 +9,7 @@ from available_animations import AVAILABLE_ANIMATIONS
 
 class StripHandler:
   def __init__(self):
+    self.strip = Strip()
     self.animation_thread = None
 
   def check_payload(self, payload):
@@ -26,23 +27,22 @@ class StripHandler:
   def update_strip(self, payload):
     self.stop_animation_thread()
 
-    strip = Strip()
-
     has_brightness = 'brightness' in payload and payload['brightness'] is not None
     has_color = 'color' in payload and payload['color'] is not None
+    has_animation = 'animation' in payload and payload['animation'] is not None
 
     if has_brightness or has_color:
       if has_brightness:
-        strip.leds.brightness = payload['brightness'] / 100
+        self.strip.leds.brightness = payload['brightness'] / 100
       
-      if has_color:
-        strip.leds.fill(int('0x' + payload['color'], 16))
+      if has_color and not has_animation:
+        self.strip.leds.fill(int('0x' + payload['color'], 16))
 
-      strip.leds.show()
+      self.strip.leds.show()
 
-    if 'animation' in payload and payload['animation'] is not None:
+    if has_animation:
       self.animation_thread = AnimationThread()
-      animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](strip)
+      animation = AVAILABLE_ANIMATIONS[payload['animation']]['construct'](self.strip)
       self.animation_thread.set_animation(animation)
       self.animation_thread.start()
 

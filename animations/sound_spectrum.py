@@ -2,11 +2,9 @@ from strip import Strip
 from time import sleep
 from animation import Animation
 
-
 class SoundSpectrumAnimation(Animation):
   def init(self):
     self.leds.fill(0x000000)
-
 
   def run(self):
     import sounddevice as sd
